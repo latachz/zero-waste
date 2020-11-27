@@ -13,6 +13,7 @@ export default StyleSheet.create({
     fontFamily: fonts.poppins.bold,
     fontSize: 32,
     textAlign: 'center',
+    marginBottom: 52,
   },
   backButtonWrapper: {
     borderColor: colors.lightGrey,
