@@ -1,12 +1,20 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, StatusBar} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import Logo from '../../../assets/images/recycle.svg';
 
-function HomeScreen() {
+import styles from './styles';
+import colors from '../../theme/colors';
+
+const Login: React.FC = () => {
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Home Screen</Text>
+    <View style={styles.screen}>
+      <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+      <Logo />
+      <Text style={styles.title}>Save the planet</Text>
+      <Text style={styles.description}>Save the planet</Text>
     </View>
   );
-}
+};
 
-export default HomeScreen;
+export default Login;
