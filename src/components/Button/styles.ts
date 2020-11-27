@@ -7,15 +7,14 @@ export default StyleSheet.create({
     backgroundColor: colors.green,
     width: '100%',
     color: colors.white,
-    height: 60,
+    height: 50,
     borderRadius: 12,
     justifyContent: 'center',
     alignItems: 'center',
-    margin: 20
   },
   label: {
     color: colors.white,
     fontSize: 14,
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+  },
 });
