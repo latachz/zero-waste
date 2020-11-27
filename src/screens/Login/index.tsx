@@ -6,6 +6,7 @@ import {useNavigation} from '@react-navigation/native';
 
 import {loginUser} from '../../actions/users';
 import Input from '../../components/Input';
+import Button from '../../components/Button';
 import styles from './styles';
 import colors from '../../theme/colors';
 
@@ -41,9 +42,7 @@ const Login: React.FC = () => {
         placeholder="Password"
         onChangeText={(value) => handleChange('password', value)}
       />
-      <TouchableOpacity onPress={handleLogin} style={styles.googleButton}>
-        <Text style={styles.googleButtonLabel}>SIGN IN</Text>
-      </TouchableOpacity>
+      <Button onPress={handleLogin} label="Sign In" />
     </View>
   );
 };
