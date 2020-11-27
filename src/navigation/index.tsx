@@ -6,12 +6,12 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Home from '../screens/Home';
 import Login from '../screens/Login';
 import Main from '../screens/Main';
+import Scanner from '../screens/Scanner';
 
 const Stack = createStackNavigator();
 
 export default function Navigation() {
   const isLoggedIn = useSelector((store: any) => store.global.isLoggedIn);
-  console.log(isLoggedIn);
 
   return (
     <NavigationContainer>
@@ -34,6 +34,11 @@ export default function Navigation() {
             <Stack.Screen
               name="Main"
               component={Main}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="Scanner"
+              component={Scanner}
               options={{headerShown: false}}
             />
           </>
