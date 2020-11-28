@@ -1,7 +1,7 @@
-import {firestore} from './firebase';
+import firestore from '@react-native-firebase/firestore';
 
 export const saveScan = async (name: string, userId: string) => {
-  const scanRef = await firestore.collection('activities').add({
+  const scanRef = await firestore().collection('activities').add({
     type: 'scan',
     name,
     createdAt: new Date(),
