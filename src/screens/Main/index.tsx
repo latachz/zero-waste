@@ -12,6 +12,7 @@ import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
 import {getActivities} from '../../api/activities';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import colors from '../../theme/colors';
 
 const Main: React.FC = () => {
   const [activities, setActivities] = useState<any[]>([]);
@@ -50,7 +51,7 @@ const Main: React.FC = () => {
         }
         
         {currentActivities && currentActivities.length !== activities.length && 
-          <TouchableOpacity onPress={showMore}><Text style={{ textAlign: 'center' }}>Show more</Text></TouchableOpacity>
+          <TouchableOpacity onPress={showMore} style={{ marginTop: -5, marginBottom: 10 }}><Text style={{ textAlign: 'center', color: colors.gray }}>Show more</Text></TouchableOpacity>
         }
         
       </ScrollView>

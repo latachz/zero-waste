@@ -18,10 +18,10 @@ interface Props {
 const Rewards = ({}: Props) => {
   return (
     <ScrollView showsHorizontalScrollIndicator={false} horizontal>
-      <RewardBox isDisabled />
-      <RewardBox isDisabled />
-      <RewardBox isDisabled />
-      <RewardBox />
+      <RewardBox info={'50% discount'} isDisabled />
+      <RewardBox info={'Recycled bag'} />
+      <RewardBox info={'50% discount'} isDisabled />
+      <RewardBox info={'50% discount'} />
     </ScrollView>
   );
 };
