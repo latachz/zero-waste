@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { View, Text, StatusBar, ImageBackground, TouchableOpacity } from 'react-native';
 //@ts-ignore
 import Logo from '../../images/recycle.svg';
@@ -11,12 +11,13 @@ import Input from '../../components/Input';
 
 import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
-import { getUsers } from '../../api/users';
+import { getUsers, getUsersByQuery } from '../../api/users';
 
 const Friends: React.FC = () => {
   const navigation = useNavigation();
   
-  const [users, setUsers] = useState<any>();
+  const [users, setUsers] = useState<any>([]);
+  const [query, setQuery] = useState<string>();
 
   const loadData = async () =>{
     try{
@@ -26,8 +27,22 @@ const Friends: React.FC = () => {
       console.log(err.response);
     }
   }
-  loadData()
-  
+
+  if (users.length === 0) {
+    loadData()
+  }
+
+  const searchFriends = async () => {
+    let res = await getUsersByQuery(query);
+    setUsers(res);
+  }
+
+  useEffect(() => {
+    if(query) {
+      searchFriends();
+    }
+  }, [query])
+
 
   return (
     <View style={styles.screen}>
@@ -36,12 +51,11 @@ const Friends: React.FC = () => {
           <TouchableOpacity onPress={() => console.log("press")} style={styles.arrowWrapper}>
             <Icon name="arrow-back" size={30} color={colors.lightGray} />
           </TouchableOpacity>
-          <Input style={{ width: '80%' }}placeholder={'Search friends'}/>
+          <Input style={{ width: '80%' }} placeholder={'Search friends'} onChangeText={t => setQuery(t)}  value={query} />
       </View>
       {users && (
         <FriendsList users={users} />
       )}
-      
     </View>
   );
 };

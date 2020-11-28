@@ -28,3 +28,17 @@ export const getUsers = async () => {
 
   return users;
 }
+
+export const getUsersByQuery = async (query: string = '') => {
+  const usersRef = await firestore().collection('users').orderBy("displayName").startAt(query);
+
+  const snapshot = await usersRef.get();
+
+  let users: any[] = [];
+
+  snapshot.forEach((doc) => users.push({...doc.data(), id: doc.id}));
+
+  console.log(users)
+
+  return users;
+}
