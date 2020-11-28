@@ -14,8 +14,9 @@ interface Props {
 const Activities = ({activities}: Props) => {
   return (
     <ScrollView style={styles.wrapper}>
-      {activities.map((activity) => (
+      {activities.map((activity, index) => (
         <Activity
+          key={index}
           title={activity.name}
           points={activity.points}
           time={'2 minutes ago'}

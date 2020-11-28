@@ -29,7 +29,8 @@ export default StyleSheet.create({
   },
   info: {
     color: colors.gray,
-    fontFamily: fonts.poppins.semiBold
+    fontFamily: fonts.poppins.semiBold,
+    marginVertical: 7
   },
   button: {
     width: 80,
