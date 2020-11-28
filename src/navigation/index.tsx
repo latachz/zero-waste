@@ -8,6 +8,7 @@ import Login from '../screens/Login';
 import Main from '../screens/Main';
 import Scanner from '../screens/Scanner';
 import Competitions from '../screens/Competitions';
+import Friends from '../screens/Friends';
 
 const Stack = createStackNavigator();
 
@@ -32,11 +33,22 @@ export default function Navigation() {
           </>
         ) : (
           <>
-            <Stack.Screen
+            {/* <Stack.Screen
               name="Main"
-              component={Competitions}
+              component={Main}
+              options={{headerShown: false}}
+            /> */}
+            <Stack.Screen
+              name="Friends"
+              component={Friends}
               options={{headerShown: false}}
             />
+            {/*
+            <Stack.Screen
+              name="Competitions"
+              component={Competitions}
+              options={{headerShown: false}}
+            /> */}
             <Stack.Screen
               name="Scanner"
               component={Scanner}
