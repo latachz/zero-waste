@@ -6,6 +6,7 @@ import { color } from 'react-native-reanimated';
 export default StyleSheet.create({
   wrapper: {
     padding: 12,
-    marginTop: -20
+    marginTop: -20,
+    width: '100%'
   },
 });
