@@ -7,6 +7,7 @@ import Header from '../../components/Header';
 import Rewards from '../../components/Rewards';
 import SectionTitle from '../../components/SectionTitle';
 import Statistics from '../../components/Statistics';
+import Activities from '../../components/Activities';
 
 import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
@@ -23,6 +24,8 @@ const Main: React.FC = () => {
         <Rewards />
         <SectionTitle>Your progress</SectionTitle>
         <Statistics />
+        <SectionTitle>Recent activity</SectionTitle>
+        <Activities />
       </ScrollView>
     </View>
   );
