@@ -16,7 +16,7 @@ export default StyleSheet.create({
     marginBottom: 52,
   },
   backButtonWrapper: {
-    borderColor: colors.lightGrey,
+    borderColor: colors.lightGray,
     borderWidth: 1,
     borderRadius: 25,
     width: 50,
@@ -26,7 +26,7 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   googleButton: {
-    borderColor: colors.lightGrey,
+    borderColor: colors.lightGray,
     borderWidth: 1,
     borderRadius: 25,
     width: '100%',

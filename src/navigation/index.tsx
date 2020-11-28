@@ -7,6 +7,7 @@ import Home from '../screens/Home';
 import Login from '../screens/Login';
 import Main from '../screens/Main';
 import Scanner from '../screens/Scanner';
+import Competitions from '../screens/Competitions';
 
 const Stack = createStackNavigator();
 
@@ -33,7 +34,7 @@ export default function Navigation() {
           <>
             <Stack.Screen
               name="Main"
-              component={Main}
+              component={Competitions}
               options={{headerShown: false}}
             />
             <Stack.Screen
