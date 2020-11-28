@@ -10,12 +10,13 @@ export const saveScan = async (name: string, userId: string) => {
   });
 
   const scanDoc = await scanRef.get();
+  console.log(scanDoc);
 
   return {...scanDoc.data(), id: scanDoc.id};
 };
 
 export const getActivities = async (userId: string) => {
-  const activitiesRef = await firestore
+  const activitiesRef = await firestore()
     .collection('activities')
     .where('userId', '==', userId);
   const snapshot = await activitiesRef.get();

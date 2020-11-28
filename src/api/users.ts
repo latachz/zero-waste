@@ -1,8 +1,8 @@
-import {auth} from './firebase';
+import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
 export const signIn = async (email: string, password: string) => {
-  const user = await auth.signInWithEmailAndPassword(email, password);
+  const user = await auth().signInWithEmailAndPassword(email, password);
   if (!user) return;
 
   const currentUser = await getCurrentUser(user.user!.uid);

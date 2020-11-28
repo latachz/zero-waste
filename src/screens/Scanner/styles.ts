@@ -9,10 +9,16 @@ export default StyleSheet.create({
     height: 250,
   },
   scanButton: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    borderWidth: 3,
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    borderWidth: 2,
     borderColor: '#fff',
+  },
+  camera: {
+    padding: 24,
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   },
 });
