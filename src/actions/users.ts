@@ -7,11 +7,11 @@ export const loginUser = (email: string, password: string) => async (
   dispatch({type: LOGIN_USER_REQUEST});
 
   try {
-    const res = await signIn(email, password);
+    const user = await signIn(email, password);
     dispatch({
       type: LOGIN_USER_SUCCESS,
       payload: {
-        user: res.user,
+        user,
       },
     });
   } catch (error) {

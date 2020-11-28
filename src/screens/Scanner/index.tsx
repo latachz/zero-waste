@@ -4,13 +4,19 @@ import {RNCamera} from 'react-native-camera';
 import {useIsFocused} from '@react-navigation/native';
 
 import styles from './styles';
+import {useDispatch, useSelector} from 'react-redux';
+import {saveScanAction} from '../../actions/activities';
 
 const Scanner = () => {
   const isFocused = useIsFocused();
+  const dispatch = useDispatch();
+
+  const currentUser = useSelector((store: any) => store.global.currentUser);
 
   const handleScanBarcode = ({barcodes}: {barcodes: any[]}) => {
     if (barcodes.length) {
       console.log(barcodes[0]);
+      dispatch(saveScanAction('Plastic bottle', currentUser!.id));
       return;
     }
   };

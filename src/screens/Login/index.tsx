@@ -40,6 +40,7 @@ const Login: React.FC = () => {
       />
       <Input
         placeholder="Password"
+        secureTextEntry
         onChangeText={(value) => handleChange('password', value)}
       />
       <Button onPress={handleLogin} label="Sign In" />
