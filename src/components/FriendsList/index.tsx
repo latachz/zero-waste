@@ -20,7 +20,7 @@ const FriendsList = ({ users }: Props) => {
   return (
     <ScrollView style={styles.wrapper}>
       {users.map((user, index) => (
-        <Friend displayName={user.displayName} photoUrl={user.photoUrl} />
+        <Friend key={index} displayName={user.displayName} photoUrl={user.photoUrl} />
       ))}
     </ScrollView>
   );

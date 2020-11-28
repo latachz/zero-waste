@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { View, Text, StatusBar, ImageBackground, TouchableOpacity } from 'react-native';
 //@ts-ignore
 import Logo from '../../images/recycle.svg';
@@ -16,23 +16,17 @@ import { getUsers } from '../../api/users';
 const Friends: React.FC = () => {
   const navigation = useNavigation();
   
-  // const [users, setUsers] = useState<any>();
+  const [users, setUsers] = useState<any>();
 
-  // const getData = async () => {
-  //   const newData = await getUsers();
-  //   setUsers(newData);
-  // }
-  // getUsers()
-
-  const getData = async () => {
-    const users = await getUsers();
-
-    return users
+  const loadData = async () =>{
+    try{
+      let res = await getUsers();
+      setUsers(res);
+    } catch(err){
+      console.log(err.response);
+    }
   }
-
-  const users = getData();
-
-  console.log(users)
+  loadData()
   
 
   return (
@@ -44,7 +38,10 @@ const Friends: React.FC = () => {
           </TouchableOpacity>
           <Input style={{ width: '80%' }}placeholder={'Search friends'}/>
       </View>
-      {/* <FriendsList users={users} /> */}
+      {users && (
+        <FriendsList users={users} />
+      )}
+      
     </View>
   );
 };
