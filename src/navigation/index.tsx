@@ -2,6 +2,7 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 
 import Home from '../screens/Home';
 import Login from '../screens/Login';
@@ -11,6 +12,25 @@ import Competitions from '../screens/Competitions';
 import Friends from '../screens/Friends';
 
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
+
+const MainDrawer = () => {
+  return (
+    <Drawer.Navigator initialRouteName="Main">
+      <Drawer.Screen name="Main" component={Main} />
+      <Drawer.Screen
+        name="Friends"
+        component={Friends}
+        options={{headerShown: false}}
+      />
+      <Drawer.Screen
+        name="Competitions"
+        component={Competitions}
+        options={{headerShown: false}}
+      />
+    </Drawer.Navigator>
+  );
+};
 
 export default function Navigation() {
   const isLoggedIn = useSelector((store: any) => store.global.isLoggedIn);
@@ -35,19 +55,9 @@ export default function Navigation() {
           <>
             <Stack.Screen
               name="Main"
-              component={Friends}
+              component={MainDrawer}
               options={{headerShown: false}}
             />
-            {/* <Stack.Screen
-              name="Friends"
-              component={Friends}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="Competitions"
-              component={Competitions}
-              options={{headerShown: false}}
-            /> */}
             <Stack.Screen
               name="Scanner"
               component={Scanner}

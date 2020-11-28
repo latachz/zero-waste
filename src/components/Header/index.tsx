@@ -15,7 +15,9 @@ const Header = ({currentUser}: Props) => {
   return (
     <View style={styles.wrapper}>
       <View style={styles.leftContainer}>
-        <Icon name={'menu'} size={18} />
+        <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+          <Icon name={'menu'} size={18} />
+        </TouchableOpacity>
         <Text style={styles.points}>400 points</Text>
       </View>
       <View style={styles.rightContainer}>

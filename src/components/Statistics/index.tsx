@@ -1,12 +1,11 @@
 import React from 'react';
-import { View } from 'react-native';
-import { BarChart, Grid, XAxis } from 'react-native-svg-charts';
+import {View} from 'react-native';
+import {BarChart, Grid, XAxis} from 'react-native-svg-charts';
 
 import colors from '../../theme/colors';
 import fonts from '../../theme/fonts';
 
 import styles from './styles';
-
 
 const Statistics = () => {
   const data = [
@@ -37,30 +36,29 @@ const Statistics = () => {
     {
       value: 85,
       label: 'S',
-    },  
-  ]
+    },
+  ];
 
   return (
     <View style={styles.wrapper}>
       <View style={styles.box}>
         <BarChart
-          style={{ flex: 1, marginLeft: 8, padding: 10 }}
+          style={{flex: 1, marginLeft: 8, padding: 10}}
           data={data}
-          yAccessor={({ item }) => item.value}
-          svg={{ fill: colors.green, stroke: 'none' }}
+          yAccessor={({item}) => item.value}
+          svg={{fill: colors.green, stroke: 'none', strokeLinecap: 'round'}}
           gridMin={0}
           spacingInner={0.8}
-          contentInset={{ top: 10, bottom: 10 }}
-        >
-          <Grid />
+          contentInset={{top: 10, bottom: 10}}>
+          <Grid svg={{strokeDasharray: [2, 2], stroke: '#F1F1F5'}} />
         </BarChart>
-      <XAxis
-        style={{ marginVertical: 10, marginHorizontal: 25 }}
-        data={data}
-        formatLabel={(_, index) => data[ index ].label}
-        contentInset={{ left: 5, right: 5 }}
-        svg={{ fontSize: 10, fill: 'black' }}
-      />
+        <XAxis
+          style={{marginVertical: 10, marginHorizontal: 25}}
+          data={data}
+          formatLabel={(_, index) => data[index].label}
+          contentInset={{left: 5, right: 5}}
+          svg={{fontSize: 10, fill: 'black'}}
+        />
       </View>
     </View>
   );

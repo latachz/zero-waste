@@ -11,6 +11,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import {saveScan} from '../../api/activities';
 import ScannerIcon from '../../images/scanner.svg';
 import ScannerIconWhite from '../../images/scanner-white.svg';
+import TrashIcon from '../../images/trash-info.svg';
+import TrashIconDark from '../../images/trash-info-dark.svg';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 interface ScannedElement {
@@ -95,7 +97,11 @@ const Scanner = () => {
                 selectedOption === 'info' && styles.buttonInactive,
               ]}
               onPress={() => handleSelectOption('scan')}>
-              <ScannerIcon width={24} height={24} fill="#263238" />
+              {selectedOption === 'scan' ? (
+                <ScannerIcon width={24} height={24} />
+              ) : (
+                <ScannerIconWhite width={24} height={24} />
+              )}
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => handleSelectOption('info')}
@@ -104,7 +110,13 @@ const Scanner = () => {
                 styles.headerButton,
                 selectedOption === 'scan' && styles.buttonInactive,
                 {marginLeft: 12},
-              ]}></TouchableOpacity>
+              ]}>
+              {selectedOption === 'info' ? (
+                <TrashIconDark width={24} height={24} />
+              ) : (
+                <TrashIcon width={24} height={24} />
+              )}
+            </TouchableOpacity>
           </View>
           <View style={{flex: 1}} />
           {scannedElement && selectedOption === 'scan' && (
