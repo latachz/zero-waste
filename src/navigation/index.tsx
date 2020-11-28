@@ -35,7 +35,7 @@ export default function Navigation() {
           <>
             <Stack.Screen
               name="Main"
-              component={Main}
+              component={Friends}
               options={{headerShown: false}}
             />
             {/* <Stack.Screen

@@ -1,13 +1,13 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { View, Text, StatusBar, ImageBackground, TouchableOpacity } from 'react-native';
+import { View, Text, StatusBar, ImageBackground, TouchableOpacity, TextInput } from 'react-native';
 //@ts-ignore
 import Logo from '../../images/recycle.svg';
 import Button from '../../components/Button';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Fontiso from 'react-native-vector-icons/Fontisto';
 import colors from '../../theme/colors';
 
 import FriendsList from '../../components/FriendsList';
-import Input from '../../components/Input';
 
 import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
@@ -23,8 +23,8 @@ const Friends: React.FC = () => {
     try{
       let res = await getUsers();
       setUsers(res);
-    } catch(err){
-      console.log(err.response);
+    } catch(err) {
+      return err;
     }
   }
 
@@ -51,7 +51,10 @@ const Friends: React.FC = () => {
           <TouchableOpacity onPress={() => console.log("press")} style={styles.arrowWrapper}>
             <Icon name="arrow-back" size={30} color={colors.lightGray} />
           </TouchableOpacity>
-          <Input style={{ width: '80%' }} placeholder={'Search friends'} onChangeText={t => setQuery(t)}  value={query} />
+          <View style={styles.inputContainer}>
+            <Fontiso name={"zoom"} size={20} color={colors.lightGray} style={{ marginLeft: 15 }} />
+            <TextInput style={styles.input} placeholder={'Search friends'} onChangeText={t => setQuery(t)} value={query} />
+          </View>
       </View>
       {users && (
         <FriendsList users={users} />
