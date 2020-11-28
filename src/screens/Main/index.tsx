@@ -11,20 +11,29 @@ import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
 import {getActivities} from '../../api/activities';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Main: React.FC = () => {
   const [activities, setActivities] = useState<any[]>([]);
   const navigation = useNavigation();
   const currentUser = useSelector((store: any) => store.global.currentUser);
+  const breakpoint = 3;
+
+  const [currentActivities, setCurrentActivities] = useState<any>()
 
   const fetchActivities = async () => {
     const res = await getActivities(currentUser.id);
     setActivities(res);
+    setCurrentActivities(res.slice(0, breakpoint))
   };
 
   useEffect(() => {
     fetchActivities();
   }, []);
+
+  const showMore = () => {
+    setCurrentActivities([...currentActivities, ...activities.slice(breakpoint, activities.length)]);
+  }
 
   return (
     <View style={styles.screen}>
@@ -36,7 +45,14 @@ const Main: React.FC = () => {
         <SectionTitle>Your progress</SectionTitle>
         <Statistics />
         <SectionTitle>Recent activity</SectionTitle>
-        <Activities activities={activities} />
+        {currentActivities && 
+          <Activities activities={currentActivities} />
+        }
+        
+        {currentActivities && currentActivities.length !== activities.length && 
+          <TouchableOpacity onPress={showMore}><Text style={{ textAlign: 'center' }}>Show more</Text></TouchableOpacity>
+        }
+        
       </ScrollView>
     </View>
   );

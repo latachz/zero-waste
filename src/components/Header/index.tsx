@@ -12,7 +12,6 @@ interface Props {
 
 const Header = ({currentUser}: Props) => {
   const navigation = useNavigation();
-  console.log(currentUser);
   return (
     <View style={styles.wrapper}>
       <View style={styles.leftContainer}>

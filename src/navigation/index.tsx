@@ -33,17 +33,16 @@ export default function Navigation() {
           </>
         ) : (
           <>
-            {/* <Stack.Screen
+            <Stack.Screen
               name="Main"
               component={Main}
               options={{headerShown: false}}
-            /> */}
-            <Stack.Screen
+            />
+            {/* <Stack.Screen
               name="Friends"
               component={Friends}
               options={{headerShown: false}}
             />
-            {/*
             <Stack.Screen
               name="Competitions"
               component={Competitions}
